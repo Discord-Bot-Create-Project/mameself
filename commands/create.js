@@ -8,21 +8,7 @@ module.exports = {
     name: 'create',
     description: 'create command',
     async execute(message, args) {
-        const userID = message.author.id;
-
-        const whitelistPath = path.join(__dirname, '../whitelist.json');
-
-        const whitelist = JSON.parse(fs.readFileSync(whitelistPath, 'utf8'));
-
-        if (!whitelist.allowedUsers.includes(userID) && userID !== config.owner) {
-            return;
-        }
-
         if (message.author.bot) return;
-
-        if (args.length < 2) {
-            return message.reply('ユーザーのメンション、ID、タグ、およびメッセージのイメージを入力してください。');
-        }
 
         const userIdentifier = args[0];
         const contentImage = args.slice(1).join(' ');
